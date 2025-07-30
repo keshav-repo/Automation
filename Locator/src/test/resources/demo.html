@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selenium Locators Demo Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .section {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .highlight {
+        background-color: #fff3cd;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .error {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+      .warning {
+        background-color: #fff3cd;
+        color: #856404;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="main-title">Selenium Locators Demo Page</h1>
+
+      <!-- ID Locator Section -->
+      <div class="section">
+        <h2>ID Locator Examples</h2>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter username"
+        />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter password"
+        />
+        <button id="login-btn">Login</button>
+        <button id="submit-btn">Submit</button>
+      </div>
+
+      <!-- Name Locator Section -->
+      <div class="section">
+        <h2>Name Locator Examples</h2>
+        <input type="text" name="fullname" placeholder="Enter full name" />
+        <input type="email" name="email" placeholder="Enter email" />
+        <textarea name="message" placeholder="Enter your message"></textarea>
+      </div>
+
+      <!-- Class Name Locator Section -->
+      <div class="section">
+        <h2>Class Name Locator Examples</h2>
+        <div class="highlight success">This is a success message</div>
+        <div class="highlight error">This is an error message</div>
+        <div class="highlight warning">This is a warning message</div>
+        <button class="btn-primary">Primary Button</button>
+        <button class="btn-secondary">Secondary Button</button>
+      </div>
+
+      <!-- Tag Name Locator Section -->
+      <div class="section">
+        <h2>Tag Name Locator Examples</h2>
+        <p>This is a paragraph with tag name 'p'</p>
+        <p>Another paragraph element</p>
+        <span>This is a span element</span>
+        <div>This is a div element</div>
+        <h3>This is an h3 heading</h3>
+      </div>
+
+      <!-- Link Text Locator Section -->
+      <div class="section">
+        <h2>Link Text Locator Examples</h2>
+        <a href="https://www.google.com">Google Search</a><br />
+        <a href="https://www.github.com">GitHub Repository</a><br />
+        <a href="https://www.selenium.dev">Selenium Documentation</a><br />
+        <a href="https://www.geeksforgeeks.org">GeeksForGeeks Tutorial</a>
+      </div>
+
+      <!-- Partial Link Text Locator Section -->
+      <div class="section">
+        <h2>Partial Link Text Locator Examples</h2>
+        <a href="https://www.google.com">Click here to search on Google</a
+        ><br />
+        <a href="https://www.github.com">Visit GitHub for code</a><br />
+        <a href="https://www.selenium.dev">Learn Selenium automation</a><br />
+        <a href="https://www.geeksforgeeks.org">Read GeeksForGeeks articles</a>
+      </div>
+
+      <!-- CSS Selector Locator Section -->
+      <div class="section">
+        <h2>CSS Selector Locator Examples</h2>
+        <div class="css-example">
+          <input
+            type="text"
+            class="css-input"
+            placeholder="CSS selector input"
+          />
+          <button class="css-button">CSS Button</button>
+        </div>
+        <div class="nested-element">
+          <span class="nested-text">Nested element text</span>
+        </div>
+        <ul class="css-list">
+          <li class="list-item">List item 1</li>
+          <li class="list-item">List item 2</li>
+          <li class="list-item">List item 3</li>
+        </ul>
+      </div>
+
+      <!-- XPath Locator Section -->
+      <div class="section">
+        <h2>XPath Locator Examples</h2>
+        <div class="xpath-container">
+          <input
+            type="text"
+            data-testid="xpath-input"
+            placeholder="XPath input field"
+          />
+          <button data-testid="xpath-button">XPath Button</button>
+          <span data-testid="xpath-text">XPath text element</span>
+        </div>
+        <table class="xpath-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>City</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John Doe</td>
+              <td>25</td>
+              <td>New York</td>
+            </tr>
+            <tr>
+              <td>Jane Smith</td>
+              <td>30</td>
+              <td>Los Angeles</td>
+            </tr>
+            <tr>
+              <td>Bob Johnson</td>
+              <td>35</td>
+              <td>Chicago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Form Elements for Various Locators -->
+      <div class="section">
+        <h2>Form Elements</h2>
+        <form id="demo-form">
+          <label for="country">Select Country:</label>
+          <select id="country" name="country">
+            <option value="">Choose a country</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="ca">Canada</option>
+            <option value="au">Australia</option>
+          </select>
+
+          <label>Gender:</label>
+          <input type="radio" id="male" name="gender" value="male" />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Female</label>
+
+          <label>Interests:</label>
+          <input type="checkbox" id="coding" name="interests" value="coding" />
+          <label for="coding">Coding</label>
+          <input
+            type="checkbox"
+            id="reading"
+            name="interests"
+            value="reading"
+          />
+          <label for="reading">Reading</label>
+          <input type="checkbox" id="gaming" name="interests" value="gaming" />
+          <label for="gaming">Gaming</label>
+        </form>
+      </div>
+
+      <!-- Hidden Elements -->
+      <div class="section">
+        <h2>Hidden Elements</h2>
+        <div class="hidden" id="hidden-div">This div is hidden</div>
+        <input type="hidden" id="hidden-input" value="hidden value" />
+        <span class="hidden" id="hidden-text">Hidden text element</span>
+      </div>
+
+      <!-- Dynamic Elements -->
+      <div class="section">
+        <h2>Dynamic Elements</h2>
+        <button id="show-dynamic" onclick="showDynamicContent()">
+          Show Dynamic Content
+        </button>
+        <div id="dynamic-content" class="hidden">
+          <p>This content was loaded dynamically</p>
+          <button id="dynamic-button">Dynamic Button</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showDynamicContent() {
+        document.getElementById("dynamic-content").classList.remove("hidden");
+      }
+
+      // Add some interactivity
+      document
+        .getElementById("login-btn")
+        .addEventListener("click", function () {
+          alert("Login button clicked!");
+        });
+
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", function () {
+          alert("Submit button clicked!");
+        });
+    </script>
+  </body>
+</html>
