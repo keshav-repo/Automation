@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public final class DriverManager {
 
     private static final ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
-    private static volatile boolean wdmConfigured;
 
     private DriverManager() {
     }
@@ -22,7 +21,7 @@ public final class DriverManager {
     }
 
     public static void initDriver() {
-        ensureWebDriverManagerConfigured();
+        WebDriverManager.chromedriver().setup();
         drivers.set(new ChromeDriver());
     }
 
@@ -32,16 +31,5 @@ public final class DriverManager {
             driver.quit();
         }
         drivers.remove();
-    }
-
-    private static void ensureWebDriverManagerConfigured() {
-        if (!wdmConfigured) {
-            synchronized (DriverManager.class) {
-                if (!wdmConfigured) {
-                    WebDriverManager.chromedriver().setup();
-                    wdmConfigured = true;
-                }
-            }
-        }
     }
 }
