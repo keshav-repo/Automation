@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="RegressionSuite">
+    <test parallel="methods" thread-count="5" name="RegressionTests">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <packages>
+            <!-- Set the package name as per your implementation -->
+            <package name="org.example"/>
+        </packages>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
