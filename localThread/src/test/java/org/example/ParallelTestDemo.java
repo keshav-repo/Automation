@@ -13,13 +13,13 @@ public class ParallelTestDemo {
 
     protected ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         threadDriver.set(new ChromeDriver());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         WebDriver driver = threadDriver.get();
         if (driver != null) {
@@ -28,23 +28,33 @@ public class ParallelTestDemo {
         threadDriver.remove();
     }
 
+    private WebDriver getDriver() {
+        WebDriver driver = threadDriver.get();
+        if (driver == null) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            threadDriver.set(driver);
+        }
+        return driver;
+    }
+
     @Test(description = "Google Search Test", groups = {"regression"})
     public void googleSearchTest() {
-        WebDriver driver = threadDriver.get();
+        WebDriver driver = getDriver();
         driver.get("https://www.google.co.in/");
 
         driver.findElement(By.name("q")).sendKeys("Hello World", Keys.ENTER);
 
-        System.out.println("Thread: " + Thread.currentThread().threadId() + " - " + driver.getTitle());
+        System.out.println("Thread: " + Thread.currentThread().getId() + " - " + driver.getTitle());
     }
 
     @Test(description = "Yahoo Search Test", groups = {"regression"})
     public void yahooSearchTest() {
-        WebDriver driver = threadDriver.get();
+        WebDriver driver = getDriver();
         driver.get("https://in.search.yahoo.com/");
 
         driver.findElement(By.name("p")).sendKeys("Hello World", Keys.ENTER);
 
-        System.out.println("Thread: " + Thread.currentThread().threadId() + " - " + driver.getTitle());
+        System.out.println("Thread: " + Thread.currentThread().getId() + " - " + driver.getTitle());
     }
 }
